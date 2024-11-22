@@ -1,0 +1,78 @@
+.filtered-table-container {
+    margin: 20px auto;
+    max-width: 800px;
+    text-align: center;
+  }
+  
+  h2 {
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+  }
+  
+  .filter-bar {
+    margin-bottom: 15px;
+  }
+  
+  .filter-button {
+    margin: 0 5px;
+    padding: 8px 15px;
+    font-size: 1rem;
+    border: none;
+    border-radius: 4px;
+    background-color: #007bff;
+    color: #fff;
+    cursor: pointer;
+  }
+  
+  .filter-button.active {
+    background-color: #0056b3;
+  }
+  
+  .filtered-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+  }
+  
+  .filtered-table th,
+  .filtered-table td {
+    border: 1px solid #ddd;
+    padding: 10px;
+  }
+  
+  .filtered-table th {
+    background-color: #f4f4f4;
+    font-weight: bold;
+  }
+  
+  .filtered-table td {
+    text-align: center;
+  }
+  
+  .accept-button {
+    background-color: #28a745;
+    color: #fff;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .reject-button {
+    background-color: #dc3545;
+    color: #fff;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .unaccept-button {
+    background-color: #ffc107;
+    color: #000;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
