@@ -3,13 +3,52 @@ body {
   height: 100vh; 
 }
 
+#navbar{
+  flex:1;
+  height:100%;
+  background: white;
+}
+
 .app-container{
   display:flex;
   height:100vh;
   width:100vw;
   overflow:hidden;
-}
+  flex-direction: column;
+} 
 
 .content-container{
-  flex:3;
+  flex:5;
+}
+
+#appLogo {
+  background-image: url('./UI/Assets/WhatsApp Image 2024-11-22 at 12.29.42_e85b4b57.jpg');
+  background-size: contain; /* Adjusts the image to fit the container */
+  background-repeat: no-repeat; /* Prevents repeating the image */
+  background-position: center; /* Centers the image */
+  height:100%;
+  width:180px;
+}
+
+#main-container{
+  display:flex;
+  flex-direction: row;
+  overflow-y: hidden;
+  /* padding-top: 20px; */
+}
+
+#app-header{
+  height:15vh;
+  border-bottom: 2px solid #ddd;
+  display:flex;
+  justify-content: space-between;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+#userlogo{
+  display:flex;
+  align-items: center;
+  justify-content: center;
+  gap:3px;
 }
