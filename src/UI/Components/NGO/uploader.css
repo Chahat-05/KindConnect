@@ -1,6 +1,6 @@
 .custom-file-upload {
-    height: 100%;
-    width: 100%;
+    /* height: 100%; */
+    /* width: 90%; */
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -13,15 +13,18 @@
     cursor: pointer;
     text-align: center;
     position: relative;
+    /* margin-bottom: 0; */
   }
   
   .icon svg {
-    height: 80px;
+    height: 60%;
+
     fill: rgba(75, 85, 99, 1);
   }
   
   .text span {
     font-weight: 400;
+    font-size: larger;
     color: rgba(75, 85, 99, 1);
   }
   
@@ -43,8 +46,8 @@
   
   .remove-button {
     position: absolute;
-    bottom: 10px;
-    right: 10px;
+    bottom: -60px;
+    right: -10px;
     background-color: #ff4d4d;
     color: white;
     border: none;

@@ -1,4 +1,11 @@
 /* Container styling */
+.custom-file-upload{
+  height:70%;
+  /* justify-content: space-between; */
+  align-items: center;
+  margin-bottom: 0px !important;
+  
+}
 .addEventOuter {
     display: flex;
     flex-direction: column;
@@ -62,16 +69,28 @@
     /* border: solid black 1px; */
     width:100%;
     display: flex;
+    gap:20px;
+    align-items: stretch;
     /* justify-content: space-between; */
   }
-  #part1a{
-    width:100%;
-  }
 
-  #part1b{
-    width:100%;
-    height:100%;
-  }
+  #part1a,#part1b
+ {
+    flex: 1; /* Ensures equal width for both sections */
+    display: flex;
+    flex-direction: column;
+    
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+#part1b{
+  align-items: center;
+  justify-content: center;
+}
+
+
   /* Input and Textarea styling */
   .eventDescription{
     width:100%

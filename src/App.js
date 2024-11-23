@@ -12,6 +12,7 @@ import DonationTable from './UI/Components/NGO/viewDonation';
 import EventPage from './UI/Components/NGO/EventPage';
 import EventDetails from './UI/Components/NGO/eventDetails';
 import VolunteerListPage from './UI/Components/NGO/VolunteerList';
+import Navbar from './UI/Components/SideNav/sideNav';
 
 function App() {
   const location=useLocation();
@@ -19,7 +20,7 @@ function App() {
   return (
     <div className="app-container">
       {shouldShowSideNav&&<div className='sideNav'>
-        hey i am side nav
+        <Navbar/>
       </div>
 }
       <div className="content-container">

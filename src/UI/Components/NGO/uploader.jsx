@@ -19,10 +19,10 @@ function ImageUploader() {
   };
 
   return (
-    <div>
-      {/* <h2>Upload an Image</h2> */}
+    
+      // {/* <h2>Upload an Image</h2> */}
 
-      {/* Upload box */}
+      // {/* Upload box */}
       <label className="custom-file-upload" htmlFor="file">
         {selectedImage ? (
           // If an image is selected, display the preview within the box
@@ -53,7 +53,7 @@ function ImageUploader() {
           style={{ display: 'none' }}
         />
       </label>
-    </div>
+    
   );
 }
 
