@@ -1,22 +1,28 @@
 .signUpinfo{
   display: flex;
-  height:100%;
-  width:100%;
+  height:100vh;
+  width:100vw;
   align-items: center;
   justify-content: center;
-  /* background-color:#7fffd4; */
+  overflow-y: auto;
+  padding-top: 0px;
+  background-color:#dcf9ef;
+  
 }
 
 .signupForm{
-  overflow-y: scroll;
+  /* overflow-y: scroll; */
   display: flex;
   flex-direction: column;
   justify-content: center;
   gap: 10px;
   /* max-width: 50%; */
-  width:85%;
-  height:85%;
+  /* margin-top: 50px; */
+
+  width:70%;
+  /* height:90% */
   padding: 20px;
+  padding-top: 140px;
   border-radius: 20px;
   position: relative;
   background-color: #fafafa;
@@ -133,6 +139,10 @@
   background-color: #00bfff96;
 }
 
+.colorpick{
+  color:black;
+
+}
 /* Customize the appearance of the MDEditor */
 .w-md-editor {
   background-color: #f9f9f9; /* Light background */

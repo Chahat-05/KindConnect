@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import FilteredTable from './FilteredTable';
-import './viewDonation.css';
+import './filteredTable.css';
 
 const VolunteerListPage = () => {
   const { eventId } = useParams(); // Get the eventId from the URL
@@ -19,9 +19,9 @@ const VolunteerListPage = () => {
 
     // Replace with API call to fetch volunteers for the specific eventId
     const dummyVolunteers = [
-      { id: 1, name: 'John Doe', contact: '1234567890', email: 'john@example.com', category: 'Environmentalists', accepted: false, rejected: false },
-      { id: 2, name: 'Jane Smith', contact: '0987654321', email: 'jane@example.com', category: 'Local Students', accepted: true, rejected: false },
-      { id: 3, name: 'Bob Brown', contact: '1122334455', email: 'bob@example.com', category: 'Local Students', accepted: false, rejected: false },
+      { id: 1, name: 'John Doe', contact: '1234567890', email: 'john@example.com', category: 'Environmentalists', accepted: true, rejected: false },
+      { id: 1, name: 'Jane Smith', contact: '0987654321', email: 'jane@example.com', category: 'Local Students', accepted: true, rejected: false },
+      { id: 1, name: 'Bob Brown', contact: '1122334455', email: 'bob@example.com', category: 'Local Students', accepted: false, rejected: false },
     ];
 
     setVolunteers(dummyVolunteers);
@@ -44,8 +44,8 @@ const VolunteerListPage = () => {
   };
 
   return (
-    <div>
-      <h1>Volunteers for Event {eventId}</h1>
+    <div className='table-container'>
+      <h1 className='mylist'>Volunteers for Event {eventId}</h1>
       <FilteredTable
         data={volunteers}
         type="volunteer"

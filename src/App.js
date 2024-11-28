@@ -15,6 +15,7 @@ import VolunteerListPage from './UI/Components/NGO/VolunteerList';
 import Navbar from './UI/Components/SideNav/sideNav';
 import SponsorListPage from './UI/Components/NGO/sponsorList';
 
+
 function App() {
   const location=useLocation();
   const shouldShowSideNav= !['/about'].includes(location.pathname);
@@ -37,7 +38,7 @@ function App() {
           <Route path="/event/:eventId/volunteers" element={<VolunteerListPage />} />
           <Route path="/event/:eventId/sponsors" element={<SponsorListPage />} />
 
-          
+        
         </Routes>
       </div>
     </div>

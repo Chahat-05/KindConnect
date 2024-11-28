@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-
+import './viewDonation.css'
 const DonationTable = () => {
   const [data, setData] = useState([]);
   const [startDate, setStartDate] = useState('');
@@ -55,7 +55,7 @@ const DonationTable = () => {
       <h1 className="donation-table-title">Transaction Table</h1>
       
       <div className="donation-table-filter">
-        <label>
+        <label className= "donation-table-label">
           Start Date:
           <input
             type="date"

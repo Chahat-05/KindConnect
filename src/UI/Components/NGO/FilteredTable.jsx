@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import './filteredTable.css';
 
 const FilteredTable = ({ data, type, eventStatus, onAccept, onReject }) => {
   const [filter, setFilter] = useState('All');
@@ -17,16 +18,18 @@ const FilteredTable = ({ data, type, eventStatus, onAccept, onReject }) => {
   }
 
   return (
-    <div>
+    <div className="filtered-table-container">
+      {/* Filter Section */}
       <div className="filter-bar">
-        <button onClick={() => setFilter('All')}>All</button>
+        <button className="filter-button" onClick={() => setFilter('All')}>All</button>
         {uniqueCategories.map((category, index) => (
-          <button key={index} onClick={() => setFilter(category)}>
+          <button key={index} className="filter-button" onClick={() => setFilter(category)}>
             {category}
           </button>
         ))}
       </div>
 
+      {/* Table Section */}
       <table className="filtered-table">
         <thead>
           <tr>
@@ -34,7 +37,7 @@ const FilteredTable = ({ data, type, eventStatus, onAccept, onReject }) => {
             <th>Contact</th>
             <th>Email</th>
             <th>Category</th>
-            {eventStatus ==='current' && <th>Actions</th>}
+            {eventStatus === 'current' && <th>Actions</th>}
           </tr>
         </thead>
         <tbody>
@@ -44,17 +47,34 @@ const FilteredTable = ({ data, type, eventStatus, onAccept, onReject }) => {
               <td>{item.contact}</td>
               <td>{item.email}</td>
               <td>{item.category}</td>
-              <td>
-                {eventStatus === 'current' && !item.accepted && !item.rejected && (
+              {eventStatus === 'current' &&<td>
+                {/* Accept/Reject Buttons */}
+                { !item.accepted && !item.rejected && (
                   <>
-                    <button onClick={() => onAccept(item.id)}>Accept</button>
-                    <button onClick={() => onReject(item.id)}>Reject</button>
+                    <button
+                      className="accept-button"
+                      onClick={() => onAccept(item.id)}
+                    >
+                      Accept
+                    </button>
+                    <button
+                      className="reject-button"
+                      onClick={() => onReject(item.id)}
+                    >
+                      Reject
+                    </button>
                   </>
                 )}
-                {eventStatus ==='current'&& item.accepted &&  <span>Accepted</span>}
-                {eventStatus =='current' && item.rejected && <span>Rejected</span>}
-                
+
+                {/* Accepted or Rejected Text */}
+                { item.accepted && (
+                  <span className="accepted-text">Accepted</span>
+                )}
+                { item.rejected && (
+                  <span className="rejected-text">Rejected</span>
+                )}
               </td>
+}
             </tr>
           ))}
         </tbody>

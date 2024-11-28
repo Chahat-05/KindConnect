@@ -3,8 +3,11 @@ import "./signupinfo.css"
 import ImageUploader from './uploader';
 import MDEditor from '@uiw/react-md-editor';
 // import ImageUploader from './uploader';
-import MultipleImageUploader from './multipleUploader';
+// import MultipleImageUploader from './multipleUploader';
 const AboutInfo=()=>{
+    
+    const [color1, setColor1] = useState('#000000'); 
+    const [color2, setColor2] = useState('#ffffff');
 
     const[ngoId,setNgoId]=useState("");
     const[ngoName,setNgoName]=useState("");
@@ -25,9 +28,10 @@ const AboutInfo=()=>{
     //     strikethrough:true,
     //     tasklists:true,
     // });
+   
     return(
 <div className='signUpinfo'>
-    <ImageUploader/>
+
     {/* <MultipleImageUploader/> */}
     <form className='signupForm'>
     <p class="titleA">Register </p>
@@ -121,6 +125,7 @@ const AboutInfo=()=>{
             onChange={(event)=>setNgoContact(event.target.value)} />
             <span>contact number</span>
         </label>
+        
         </div>
 
 
@@ -180,6 +185,37 @@ const AboutInfo=()=>{
             onChange={(event)=>setNgoTagline(event.target.value)} />
 
             <span>Tagline</span>
+        </label>
+        <label>
+
+<span  className='colorpick'>Upload NGO's logo</span>
+<ImageUploader/>
+</label>
+        <label>
+        <span className="colorpick">Choose a color from color pallete   </span>
+        
+        <input
+          type="color"
+          placeholder="Color1"
+          name="color1"
+          value={color1}
+          onChange={(e) => setColor1(e.target.value)}
+          className="color-picker"
+        />
+        
+        </label>
+        <label>
+        <span className="colorpick">Choose second color from color pallete   </span>
+        
+        <input
+          type="color"
+          placeholder="Color2"
+          name="color2"
+          value={color2}
+          onChange={(e) => setColor2(e.target.value)}
+          className="color-picker"
+        />
+        
         </label>
 
         <button className="submit">Submit</button>

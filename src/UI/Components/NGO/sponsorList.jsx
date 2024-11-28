@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import FilteredTable from './FilteredTable';
-import './viewDonation.css';
+import './filteredTable.css';
 
 const SponsorListPage = () => {
   const { eventId } = useParams(); // Get the eventId from the URL
@@ -44,8 +44,8 @@ const SponsorListPage = () => {
   };
 
   return (
-    <div>
-      <h1>Sponsors for Event {eventId}</h1>
+    <div className='table-container'>
+      <h1 className='mylist'>Sponsors for Event {eventId}</h1>
       <FilteredTable
         data={sponsors}
         type="sponsor"
