@@ -25,7 +25,7 @@ export const VolunteerForm = ({ showEvent }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch(`/api/volunteers/${showEvent.eventTitle}`, {
+      const response = await fetch(`/api/volunteers/${showEvent.eventTitle}`, { 
         method: "POST",
         headers: {
           "Content-Type": "application/json",

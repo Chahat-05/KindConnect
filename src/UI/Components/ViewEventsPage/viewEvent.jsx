@@ -3,7 +3,7 @@ import "./viewEvent.css";
 import ReactMarkdown from "react-markdown";
 import { useNavigate } from "react-router-dom";
 
-export const ViewEventPage = ({ showEvent, setShowNonprofit }) => {
+export const ViewEventPage = ({ showEvent, setShowNonprofit, username }) => {
     const navigate = useNavigate();
     if (!showEvent) {
         return <div>Loading...</div>; 

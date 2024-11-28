@@ -10,33 +10,40 @@ import AboutPage from "./UI/Components/NonProfitAboutPage/aboutPage.jsx";
 import ViewEventPage from "./UI/Components/ViewEventsPage/viewEvent.jsx";
 import VolunteerForm from "./UI/Components/VolunteerForm/volunteerForm.jsx";
 import SponsorForm from "./UI/Components/SponsorForm/sponsorForm.jsx";
+import PostProductForm from "./UI/Components/PostProductPage/postProduct.jsx";
+import LoginSignUp from "./UI/Components/LoginSignUpPage/loginSignUp.jsx";
+import Organisations from "./UI/Components/AllOrganisations/organisations.jsx";
 
 
 function App() {
   const location = useLocation(); 
-  const shouldShowSideNav = !['/'].includes(location.pathname);
-  const shouldShowLogo = !['/'].includes(location.pathname);
+  const shouldShowSideNav = !['/','/login-signup'].includes(location.pathname);
+  const shouldShowLogo = !['/','/login-signup'].includes(location.pathname);
   const [showEvent, setShowEvent]=useState(null);
   const [showNonprofit, setShowNonprofit] =useState(null);
+  const [username, setUsername] = useState('');
   return (
     <div className="app-container"> 
-      {shouldShowLogo &&(<div id="app-header"> 
+      {shouldShowLogo &&(<div id="app-header" style={{background:"white"}}> 
         <div id="appLogo"></div>
         <div id="userlogo">
           <box-icon type='solid' name='user-circle'></box-icon>
-          <div>username</div>
+          <div>{username}</div>
           </div></div>)}
       <div id="main-container">
       {shouldShowSideNav && (<div id="navbar"><SideNav/></div>)}
       <div className="content-container">
         <Routes>
           <Route path="/" element={<LandingPage/>}/>
-          <Route path="/events" element={<EventPage setShowEvent={setShowEvent}/>}/>
-          <Route path="/products" element={<ProductPage/>}/>
-          <Route path="/about" element={<AboutPage showNonprofit={showNonprofit}/>}/>
+          <Route path="/events" element={<EventPage setShowEvent={setShowEvent} username={username}/>}/>
+          <Route path="/products" element={<ProductPage username={username}/>}/>
+          <Route path="/about" element={<AboutPage showNonprofit={showNonprofit} username={username}/>}/>
           <Route path="/view" element={<ViewEventPage showEvent={showEvent} setShowNonprofit={setShowNonprofit}/>}/>
           <Route path="/volunteer" element={<VolunteerForm showEvent={showEvent}/>}/>
           <Route path="/sponsor" element={<SponsorForm showEvent={showEvent}/>}/>
+          <Route path="/post" element={<PostProductForm/>}/>
+          <Route path="/login-signup" element={<LoginSignUp setUsername={setUsername}/>}/>
+          <Route path="/organisations" element={<Organisations setShowNonprofit={setShowNonprofit}/>}/>
         </Routes>
       </div>
       </div>

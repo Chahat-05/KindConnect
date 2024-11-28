@@ -2,8 +2,9 @@ import { React, useState, useEffect } from "react";
 import "./aboutPage.css";
 import ReactMarkdown from "react-markdown";
 
-export const AboutPage = ({showNonprofit}) => {
+export const AboutPage = ({showNonprofit, username}) => {
     const [organisationData, setOrganisationData] = useState(null);
+    const [amount,setAmount]=useState('');
 
     // Fetch the organisation data on component mount
     useEffect(() => {
@@ -43,6 +44,43 @@ export const AboutPage = ({showNonprofit}) => {
         organisationPurpose,
         organisationTagline,
     } = organisationData;
+    const today = new Date().toISOString().split("T")[0];
+
+    const handleClick = async (e) => {
+        e.preventDefault();
+        try {
+            // Log the key to ensure it's correct
+            // alert("Product ID (key) to delete:", productId);
+
+            // Send the POST request to buy the product
+            const formData = {
+                username: username,
+                amount: amount,
+                category: "Direct Donation",
+                date: today,
+                organisation: organisationName,
+            };
+            const postResponse = await fetch(`/api/directDonation`, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(formData),
+            });
+
+            const postData = await postResponse.json();
+
+            if (postResponse.ok) {
+                alert("Donation Made");
+                console.log("POST Response:", postData);
+            } else {
+                console.log(`Error buying product: ${postData.message}`);
+            }
+
+        } catch (error) {
+            console.error("Error in processing both requests:", error);
+        }
+    };
 
     // Return the component with fetched data
     return (
@@ -81,6 +119,16 @@ For inquiries, partnerships, or support, please reach out to us at:
 
             {/* Tagline */}
             <ReactMarkdown>{`*${organisationTagline}*`}</ReactMarkdown>
+            <form onSubmit={handleClick}>
+            <div id="directDonationButton">
+                <input type="number"
+                        placeholder="Enter amount"
+                        value={amount}
+                        onChange={(e) => setAmount(e.target.value)}
+                        required></input>
+                <button type="submit">Donate to Our Cause</button>
+            </div>
+            </form>
         </div>
     );
 };
