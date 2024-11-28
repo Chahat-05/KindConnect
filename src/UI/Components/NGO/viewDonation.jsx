@@ -51,10 +51,10 @@ const DonationTable = () => {
   };
 
   return (
-    <div className="table-container">
-      <h1>Transaction Table</h1>
+    <div className="donation-table-container">
+      <h1 className="donation-table-title">Transaction Table</h1>
       
-      <div style={{ marginBottom: '20px' }}>
+      <div className="donation-table-filter">
         <label>
           Start Date:
           <input
@@ -62,23 +62,25 @@ const DonationTable = () => {
             value={startDate}
             onChange={(e) => setStartDate(e.target.value)}
             disabled={isFiltered}
+            className="donation-table-input"
           />
         </label>
-        <label style={{ marginLeft: '10px' }}>
+        <label className="donation-table-label">
           End Date:
           <input
             type="date"
             value={endDate}
             onChange={(e) => setEndDate(e.target.value)}
             disabled={isFiltered}
+            className="donation-table-input"
           />
         </label>
-        <button onClick={handleFilter} style={{ marginLeft: '10px' }}>
+        <button onClick={handleFilter} className="donation-table-button">
           {isFiltered ? "Remove Filter" : "Filter"}
         </button>
       </div>
 
-      <table border="1">
+      <table className="donation-table">
         <thead>
           <tr>
             <th>Username</th>
@@ -99,7 +101,7 @@ const DonationTable = () => {
         </tbody>
       </table>
 
-      <div style={{ marginTop: '20px', fontWeight: 'bold' }}>
+      <div className="donation-table-total">
         Total Amount: ${totalAmount.toFixed(2)}
       </div>
     </div>

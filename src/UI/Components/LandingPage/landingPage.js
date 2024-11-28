@@ -4,7 +4,7 @@ import "./landingPage.css";
 export const LandingPage = () =>{
     return (
         <div id="mainContainer">
-            hello
+            
         </div>
     );
 }

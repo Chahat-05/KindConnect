@@ -1,35 +1,20 @@
-import React, { useState, useEffect } from 'react';
-import './filteredTable.css'
-const FilteredTable = ({ data, type }) => {
+import React, { useState } from 'react';
+
+const FilteredTable = ({ data, type, eventStatus, onAccept, onReject }) => {
   const [filter, setFilter] = useState('All');
-  const [currentDate, setCurrentDate] = useState(new Date());
 
-  // Update the current date every minute
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentDate(new Date());
-    }, 60000); // Update every minute
-
-    return () => clearInterval(interval); // Clear the interval on component unmount
-  }, []);
-
-  // Ensure data is not undefined or empty
   if (!data || data.length === 0) {
     return <p>No {type}s available for this event.</p>;
   }
 
   const uniqueCategories = [...new Set(data.map((item) => item.category))];
 
-  const filteredData = filter === 'All' ? data : data.filter((item) => item.category === filter);
+  let filteredData = filter === 'All' ? data : data.filter((item) => item.category === filter);
 
-  const calculateTimeLeft = (timestamp) => {
-    const timeLeft = new Date(timestamp) - currentDate;
-    const hoursLeft = Math.floor(timeLeft / 1000 / 60 / 60);
-    const minutesLeft = Math.floor((timeLeft / 1000 / 60) % 60);
-
-    if (timeLeft <= 0) return 'Time Expired';
-    return `${hoursLeft}h ${minutesLeft}m left`;
-  };
+  // Show only accepted volunteers if the event is past
+  if (eventStatus === 'past') {
+    filteredData = filteredData.filter((item) => item.accepted);
+  }
 
   return (
     <div>
@@ -49,9 +34,7 @@ const FilteredTable = ({ data, type }) => {
             <th>Contact</th>
             <th>Email</th>
             <th>Category</th>
-            <th>Status</th>
-            <th>Time Left</th>
-            <th>Action</th>
+            {eventStatus ==='current' && <th>Actions</th>}
           </tr>
         </thead>
         <tbody>
@@ -61,29 +44,16 @@ const FilteredTable = ({ data, type }) => {
               <td>{item.contact}</td>
               <td>{item.email}</td>
               <td>{item.category}</td>
-              <td>{item.accepted ? 'Accepted' : 'Pending'}</td>
-              <td>{calculateTimeLeft(item.timestamp)}</td>
               <td>
-                {!item.accepted && (
+                {eventStatus === 'current' && !item.accepted && !item.rejected && (
                   <>
-                    <button
-                      onClick={() => {
-                        alert(`${type} Accepted: ${item.name}`);
-                        // Logic to update item status to accepted in your state or database
-                      }}
-                    >
-                      Accept
-                    </button>
-                    <button
-                      onClick={() => {
-                        alert(`${type} Rejected: ${item.name}`);
-                        // Logic to update item status to rejected in your state or database
-                      }}
-                    >
-                      Reject
-                    </button>
+                    <button onClick={() => onAccept(item.id)}>Accept</button>
+                    <button onClick={() => onReject(item.id)}>Reject</button>
                   </>
                 )}
+                {eventStatus ==='current'&& item.accepted &&  <span>Accepted</span>}
+                {eventStatus =='current' && item.rejected && <span>Rejected</span>}
+                
               </td>
             </tr>
           ))}

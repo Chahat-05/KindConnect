@@ -13,6 +13,7 @@ import EventPage from './UI/Components/NGO/EventPage';
 import EventDetails from './UI/Components/NGO/eventDetails';
 import VolunteerListPage from './UI/Components/NGO/VolunteerList';
 import Navbar from './UI/Components/SideNav/sideNav';
+import SponsorListPage from './UI/Components/NGO/sponsorList';
 
 function App() {
   const location=useLocation();
@@ -34,6 +35,7 @@ function App() {
           <Route path="/eventPage" element={<EventPage/>}/>
           <Route path='/event/:eventId' element={<EventDetails/>}/>
           <Route path="/event/:eventId/volunteers" element={<VolunteerListPage />} />
+          <Route path="/event/:eventId/sponsors" element={<SponsorListPage />} />
 
           
         </Routes>
