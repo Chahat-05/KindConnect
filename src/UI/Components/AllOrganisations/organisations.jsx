@@ -34,7 +34,7 @@ const OrganisationPage = ({setShowNonprofit}) => {
                     image={organisation.orgImage}
                     tagline={organisation.organisationTagline}
                     organisation={organisation}
-                    setShowNonprofit={setShowNonprofit}
+                    setShowNonprofit={setShowNonprofit} 
                 />
             ))}
         </div>

@@ -11,8 +11,8 @@ export const EventPage = () => {
             <div id="navprofile">
                 <box-icon name='menu'></box-icon>
             </div>
-            <div id="navBarButtons">
-                <div className="button" onClick={() => navigate('/events')}>
+            <div id="navBarButtons"> 
+                <div className="button" onClick={() => navigate('/events')}> 
                     <box-icon name='calendar-event' color='#626262'></box-icon>
                     Events
                 </div>
@@ -24,12 +24,8 @@ export const EventPage = () => {
                     <box-icon name='group' color='#626262'></box-icon>
                     Non-Profits
                 </div>
-                <div className="button" onClick={() => navigate('/profile')}>
-                    <box-icon name='user-circle' color='#626262'></box-icon>
-                    Profile
-                </div>
             </div>
-            <div className="button" onClick={() => navigate('/login-signup')}>
+            <div className="button" onClick={() => navigate('/')}>
                 <box-icon name='log-out-circle' color='#626262'></box-icon>
                 Logout
             </div>

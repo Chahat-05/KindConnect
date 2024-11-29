@@ -70,7 +70,7 @@ export const ProductsCard = ({ productId,
 
     return (
         <div className="productcard">
-            <div className="card-img"><img src={productImage}></img></div>
+            <div className="card-img" style={{background:"white", overflow:"hidden", display:"flex", justifyContent:"center"}}><img src={productImage} style={{height:"100%"}}></img></div>
             <div className="card-info">
                 <p className="text-title">{productName} </p>
                 <p className="text-body">{productDescription}</p>

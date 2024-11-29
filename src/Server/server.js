@@ -108,7 +108,7 @@ app.get("/api/about", async (req, res) => {
     res.json(aboutInfo);
   } catch (error) {
     console.error("Error fetching organisation data:", error);
-    res.status(500).json({ error: "Internal Server Error" });
+    res.status(500).json({ error: "Internal Server Error" }); 
   }
 });
 
@@ -389,6 +389,186 @@ app.post("/api/login", async (req, res) => {
     res.status(200).json({ message: "Login successful", username: user.username });
   } catch (error) {
     console.error("Error logging in:", error);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+});
+
+
+
+
+
+//---------------------------------------------------------------------------------------------------------------------------------------
+
+app.post("/api/orglogin", async (req, res) => {
+  try {
+    const { organisationEmail, password } = req.body;
+
+    if (!organisationEmail || !password) {
+      return res.status(400).json({ error: "Email and password are required" });
+    }
+
+    // Find user by email
+    const user = await organisationsCollection.findOne({ organisationEmail });
+    if (!user) {
+      return res.status(404).json({ error: "User not found" });
+    }
+
+    // Compare passwords (without hashing)
+    if (password !== user.password) {
+      return res.status(400).json({ error: "Invalid password" });
+    }
+
+    // Include the username in the response
+    res.status(200).json({ message: "Login successful", organisationUser: user.organisationName });
+  } catch (error) {
+    console.error("Error logging in:", error);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+});
+
+app.get("/api/orgevents/:organisationUser", async (req, res) => {
+  try {
+    const { organisationUser } = req.params;
+
+    // Query the events collection for events that belong to the specified organization
+    const events = await eventsCollection.find({ 
+      organisationName: organisationUser }).toArray();
+
+    if (events.length === 0) {
+      console.log(organisationUser);
+      return res.status(404).json({ error: "No events found for this organization" });
+    }
+    console.log(organisationUser);
+    console.log(events);
+    res.status(200).json({ events });
+  } catch (error) {
+    console.error("Error fetching events:", error);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+});
+
+app.get("/api/getdonations/:organisationUser", async (req, res) => {
+  try {
+    const { organisationUser } = req.params;
+
+    // Query the donations collection for donations belonging to the specified organization
+    const donations = await donationsCollection.find({ 
+      organisation: organisationUser 
+    }).toArray();
+
+    if (donations.length === 0) {
+      console.log(organisationUser);
+      return res.status(404).json({ error: "No donations found for this organization" });
+    }
+    console.log(organisationUser);
+    console.log(donations);
+    res.status(200).json(donations); // Directly return the donations array
+  } catch (error) {
+    console.error("Error fetching donations:", error);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+});
+
+app.post("/api/register", async (req, res) => {
+  try {
+    const { organisationName, organisationEmail, organisationWebsite, organisationPurpose, aboutOrganisation, organisationPhone, organisationTagline, password, confirmPassword, color1,color2} = req.body;
+
+    // Validation: Check if required fields are provided
+    if (!organisationName || !organisationEmail || !organisationWebsite || !organisationPurpose || !aboutOrganisation || !organisationPhone || !organisationTagline || !password || !confirmPassword) {
+      return res.status(400).json({ error: "All fields are required" });
+    }
+
+    // Check if password and confirm password match
+    if (password !== confirmPassword) {
+      return res.status(400).json({ error: "Passwords do not match" });
+    }
+
+    // Check if NGO already exists by email
+    const existingNgo = await organisationsCollection.findOne({ organisationEmail });
+    if (existingNgo) {
+      return res.status(400).json({ error: "NGO with this email already exists" });
+    }
+
+    // Insert new NGO into the database
+    const newNgo = {
+      organisationName, organisationEmail, organisationWebsite, organisationPurpose, aboutOrganisation, organisationPhone, organisationTagline, password, color1,color2  // Store the plain password (not hashed)
+    };
+    console.log(newNgo);
+    await organisationsCollection.insertOne(newNgo);
+
+    // Respond with a success message
+    res.status(201).json({ message: "NGO registered successfully!" });
+  } catch (error) {
+    console.error("Error signing up NGO:", error);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+});
+
+app.post('/api/addevent', async (req, res) => {
+  const { organisationName, eventTitle, eventDate, eventTime, eventLocation, eventDescription, sponsorList, volunteerList } = req.body;
+
+  try {
+    // Create a new event using the Event model
+    const newEvent = {
+      organisationName,
+      eventTitle,
+      eventDate,
+      eventTime,
+      eventLocation,
+      eventDescription,
+      sponsorList,
+      volunteerList
+    };
+
+    // Access the underlying MongoDB collection and insert the event
+    await eventsCollection.insertOne(newEvent);
+
+    // Send a success response
+    res.status(201).json({ message: 'Event added successfully!', event: newEvent });
+  } catch (error) {
+    console.error('Error adding event:', error);
+    res.status(500).json({ error: 'Error adding event' });
+  }
+});
+
+app.get("/api/volunteers/:eventName", async (req, res) => {
+  try {
+    const { eventName } = req.params;
+
+    // Query the events collection for events that belong to the specified organization
+    const volunteers = await volunteersCollection.find({ 
+      eventTitle: eventName }).toArray();
+
+    if (volunteers.length === 0) {
+      console.log(eventName);
+      return res.status(404).json({ error: "No events found for this organization" });
+    }
+    console.log(volunteers);
+    // console.log(events);
+    res.status(200).json({ volunteers });
+  } catch (error) {
+    console.error("Error fetching events:", error);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+});
+
+app.get("/api/sponsors/:eventName", async (req, res) => {
+  try {
+    const { eventName } = req.params;
+
+    // Query the events collection for events that belong to the specified organization
+    const sponsors = await sponsorCollection.find({ 
+      eventTitle: eventName }).toArray();
+
+    if (sponsors.length === 0) {
+      console.log(eventName);
+      return res.status(404).json({ error: "No events found for this organization" });
+    }
+    console.log(sponsors);
+    // console.log(events);
+    res.status(200).json({ sponsors }); 
+  } catch (error) {
+    console.error("Error fetching events:", error);
     res.status(500).json({ error: "Internal Server Error" });
   }
 });

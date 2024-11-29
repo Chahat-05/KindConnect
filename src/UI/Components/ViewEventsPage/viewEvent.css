@@ -17,6 +17,7 @@
     position: relative;
     flex-direction: column;
     align-items: center;
+    background-color: rgb(148, 187, 221);
 }
 
 #colorText1 img{

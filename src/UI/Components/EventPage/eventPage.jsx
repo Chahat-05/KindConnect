@@ -17,7 +17,7 @@ export const EventPage = ({ setShowEvent }) => {
                 const eventData = await response.json();
                 setEvents(eventData);
             } catch (error) {
-                console.error("Error fetching events:", error);
+                console.error("Error fetching events:", error); 
             }
         };
 
@@ -42,6 +42,8 @@ export const EventPage = ({ setShowEvent }) => {
                                 ? eventData.eventDescription.slice(0, 100) + "..."
                                 : eventData.eventDescription
                         }
+                        image={eventData.eventLogo}
+                        logo={eventData.logo}
                         onClick={() => handleCardClick(eventData)} // Pass the click handler
                     />
                 ))

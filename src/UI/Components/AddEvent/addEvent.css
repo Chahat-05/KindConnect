@@ -1,0 +1,186 @@
+/* Container styling */
+.custom-file-upload{
+    height:70%;
+    /* justify-content: space-between; */
+    align-items: center;
+    margin-bottom: 0px !important;
+    
+  }
+  .addEventOuter {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      /* min-height: 100vh; */
+      height: 100%;
+      background-color: #f5f7fa;
+      /* overflow-y:auto; */
+    }
+    
+    #HeadingAbc {
+      font-size: 1.5rem;
+      font-weight: 700;
+      text-align: center;
+      color: #333;
+      margin-bottom: 20px;
+    }
+    
+    .addEvent {
+      overflow-y: auto;
+      background: #ffffff;
+      padding: 40px;
+      /* padding-bottom: 0px; */
+      /* max-width: 500px; */
+      width: 70%;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+    
+    /* Label styling */
+    .addEvent label {
+      display: block;
+      margin-bottom: 20px;
+      color: #555;
+      font-weight: 600;
+      font-size: 0.9rem;
+    }
+    
+    .addEvent label span {
+      display: block;
+      margin-bottom: 8px;
+    }
+  
+    .outerPrt{
+      display: flex;
+      flex-direction: column;
+      /* gap:40px; */
+      /* border:solid black 1px; */
+    }
+  
+    .part2{
+      /* border:solid black 1px; */
+      width:50%;
+      margin-top:80px
+  
+    }
+  
+    .part1
+    {
+      /* border: solid black 1px; */
+      width:100%;
+      display: flex;
+      gap:20px;
+      align-items: stretch;
+      /* justify-content: space-between; */
+    }
+  
+    #part1a,#part1b
+   {
+      flex: 1; /* Ensures equal width for both sections */
+      display: flex;
+      flex-direction: column;
+      
+      background-color: #ffffff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  #part1b{
+    align-items: center;
+    justify-content: center;
+  }
+  
+  
+    /* Input and Textarea styling */
+    .eventDescription{
+      width:100%
+    }
+    .eventDate,.eventTitle,.eventTime,.eventLocation {
+      width: 85%;
+      padding: 10px 15px;
+      font-size: 1rem;
+      border-radius: 4px;
+      border: 1px solid #ddd;
+      background: #f9f9f9;
+      resize: none;
+      transition: border 0.3s ease;
+    }
+    
+    .eventDescription:focus,
+    .eventDate:focus {
+      border: 1px solid #007bff;
+      outline: none;
+      background-color: #ffffff;
+    }
+    
+    textarea::placeholder {
+      color: #aaa;
+    }
+    
+    /* Button styling */
+    button[type="submit"] {
+      background-color: #007bff;
+      color: #ffffff;
+      padding: 12px 20px;
+      font-size: 1rem;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: background-color 0.3s ease;
+      width: 100%;
+      margin-top: 10px;
+    }
+    
+    button[type="submit"]:hover {
+      background-color: #0056b3;
+    }
+    
+  
+    .addIbutton {
+      background-color: rgb(73, 163, 73);
+      color: white;
+      border: none;
+      border-radius: 50%;
+      width: 30px; /* Set equal width and height for a circular shape */
+      height: 30px;
+      font-size: 20px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+  }
+    
+    .addIbutton:hover {
+      filter: brightness(1.2);
+      color: rgb(0, 0, 0, .5);
+    }
+    
+    .addIbutton:active {
+      transition: 0s;
+      transform: rotate(-10deg);
+    }
+  
+    .deleteIbutton {
+      background-color: white;
+      color: red;
+      border: 2px solid red;
+      border-radius: 50%;
+      width: 20px;
+      height: 20px;
+      font-size: 18px;
+      font-weight: bold;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+  }
+     /* .deleteIbutton:hover {
+      box-shadow: 3.4px 2.5px 4.9px rgba(0, 0, 0, 0.025),
+       8.6px 6.3px 12.4px rgba(0, 0, 0, 0.035),
+       17.5px 12.8px 25.3px rgba(0, 0, 0, 0.045),
+       36.1px 26.3px 52.2px rgba(0, 0, 0, 0.055),
+       99px 72px 143px rgba(0, 0, 0, 0.08);
+     } */
+  
+    

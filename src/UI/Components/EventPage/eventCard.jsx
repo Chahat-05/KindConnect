@@ -6,16 +6,17 @@ export const EventCard = ({key,
     organisation,
     event,
     descriptionPreview,
-    onClick }) => {
+    onClick,
+image, logo }) => {
     return (
-        /* From Uiverse.io by andrew-demchenk0 */
+        /* From Uiverse.io by andrew-demchenk0 */ 
         /* From Uiverse.io by itsavicreation */
         <div className="card" onClick={onClick}>
             <div className="card__img">
-                <img src={event.image}></img>
+                <img src={image}></img>
             </div>
             <div className="card__avatar">
-                <img src={organisation.logo}></img>
+                <img src={logo}></img>
             </div>
             <div className="card__title">{event}</div>
             <div className="card__subtitle">{organisation}</div>

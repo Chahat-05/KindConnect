@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 
 const ProductsPage = ({username}) => {
     const [products, setProducts]=useState([]);
-    const navigate = useNavigate();
+    const navigate = useNavigate(); 
     useEffect(() => {
         const fetchEvents = async () => {
             try {
@@ -39,7 +39,7 @@ const ProductsPage = ({username}) => {
                     username={username}
                 />
             ))}
-            <div id="addProductButton" onClick={()=>{navigate('/postProduct')}}>Post a Product</div>
+            <div id="addProductButton" onClick={()=>{navigate('/post')}}>Post a Product</div>
         </div>
     );
 }

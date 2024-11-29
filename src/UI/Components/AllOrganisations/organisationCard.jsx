@@ -11,7 +11,7 @@ export const ProductsCard = ({ name,
 
     return (
         <div className="productcard" onClick={()=>{setShowNonprofit(name);navigate('/about')}}>
-            <div className="card-img"><img src={image}></img></div>
+            <div className="card-img" style={{background:"white", display:"flex",justifyContent:"center"}}><img src={image} style={{height:"100%"}}></img></div>
             <div className="card-info">
                 <p className="text-title">{name} </p>
                 <p className="text-body">{tagline}</p>

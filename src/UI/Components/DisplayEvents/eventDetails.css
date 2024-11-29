@@ -1,0 +1,176 @@
+/* EventDetails Component Styling */
+
+.event-details-page {
+    max-width: 800px;
+    height: 78vh; /* Sets a fixed height for scrollability within this container */
+    margin: 0 auto;
+    padding: 20px;
+    padding-bottom: 0px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow-y: auto; /* Enables vertical scrolling */
+    font-family: Arial, sans-serif;
+  }
+  
+  .event-details-page h2 {
+    font-size: 28px;
+    font-weight: bold;
+    color:rgb(55, 46, 65);
+    margin-bottom: 10px;
+    text-align: center;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+  }
+  
+  .eventImage {
+    width: 100%;
+    height: 50vh;
+    width:50vw;
+    border-radius: 8px;
+    margin: 20px 0;
+  }
+  
+  .event-details-page h3 {
+    font-size: 20px;
+    font-weight: bold;
+    color: #322c2c;
+    margin-top: 15px;
+  }
+  
+  .event-details-page p {
+    font-size: 16px;
+    color: #444;
+    margin: 10px 0;
+  }
+  
+  .event-details-page textarea,
+  .event-details-page input[type="date"] {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    color: #333;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-sizing: border-box;
+    margin-top: 10px;
+  }
+  
+  .event-details-page textarea {
+    min-height: 100px;
+    resize: vertical;
+  }
+  
+  .event-details-page ul {
+    list-style-type: disc;
+    margin: 10px 0 10px 20px;
+    padding: 0;
+  }
+  
+  .event-details-page li {
+    font-size: 16px;
+    color: #444;
+    margin-bottom: 5px;
+  }
+  
+  #editing {
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    color: white;
+    background-color: #2f68a5;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin: 5px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .event-details-page button:hover {
+    background-color: #0056b3;
+  }
+  
+  .event-details-page button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+  }
+  
+  .event-details-page .edit-buttons {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    margin-top: 15px;
+  }
+  
+  
+  #save {
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    color: white;
+    background-color: #28a745;/* Blue color for sponsors */
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin: 10px 5px;
+  }
+  
+  #save:hover {
+    background-color: #218838;
+  }
+  #cancel {
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    color: white;
+    background-color: #dc3545;/* Blue color for sponsors */
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin: 10px 5px;
+  }
+  
+  
+  #cancel:hover {
+    background-color: #d8051a;
+  }
+  .viewVol {
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    color: white;
+    background-color: #28a745; /* Green color for volunteers */
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin: 10px 5px;
+  }
+  
+  .viewVol:hover {
+    background-color: #218838; /* Darker green on hover */
+  }
+  
+  .viewspon {
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    color: white;
+    background-color: #007bff; /* Blue color for sponsors */
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin: 10px 5px;
+  }
+  
+  .viewspon:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+  }
+  
+  .event-details-page div > .viewVol, 
+  .event-details-page div > .viewspon {
+    float: right; /* Align buttons to the right */
+    margin-left: 10px; /* Add spacing between the two buttons */
+  }

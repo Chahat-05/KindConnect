@@ -14,14 +14,15 @@ export const ViewEventPage = ({ showEvent, setShowNonprofit, username }) => {
     const {
         id,
         organisationName,
+        orgImage,
         eventTitle,
         eventDate,
         eventTime,
         eventLocation,
-        eventLogo,
         eventDescription,
         sponsorList,
-        volunteerList
+        volunteerList,
+        logo
     } = showEvent;
 
     const details = `
@@ -46,20 +47,10 @@ ${eventDescription}
         <div id="viewEventMain">
             <div
                 id="colorText1"
-                style={{
-                    background: `
-      linear-gradient(
-        rgba(0, 0, 0, 0.5), 
-        rgba(0, 0, 0, 0.5)
-      ), 
-      url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQSL5K2edp751XdHcVrvNcmzOVLxxxcJRjE5Q&s")
-    `,
-                    backgroundPosition: "center",
-                }}
                 onClick={handleOrganisationClick} // Add onClick handler here
-            >
+            >  <img src={orgImage} alt="Logo" />
                 {organisationName}
-                <img src={eventLogo} alt={`${organisationName} logo`} />
+                <img src={logo} alt={`${organisationName} logo`} />
             </div>
             <div id="textMain">
                 <div id="eventDescription">
